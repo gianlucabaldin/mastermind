@@ -1,25 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button, Jumbotron, Container, Col, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <Container className="App">
+      <Row>
+        <Col xs={12}>
+          <Jumbotron>
+            <h1>Mastermind game</h1>
+            <p>
+              A React-Redux project simulates the Mastermind game
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+            <p>
+              Click on the button below to start a new match
+        </p>
+          </Jumbotron>
+        </Col>
+      </Row >
+      <Row>
+        <Col>
+          <Button variant="primary" >
+            Start
+          </Button>
+        </Col>
+      </Row>
+    </Container >
   );
 }
 
