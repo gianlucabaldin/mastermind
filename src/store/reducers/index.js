@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { attempts } from './attempts'
+import { attempts } from './reducers'
 export default combineReducers({
   attempts
 })

@@ -1,11 +1,11 @@
-import { INCREMENT, TOGGLE_VISIBILITY, RESET} from '../const/consts'
+import {START, ATTEMPT, RESET} from '../consts/consts'
 
-export const increment = () => ({
-  type: INCREMENT
+export const start = () => ({
+  type: START
 })
 
-export const toggleVisibilty = () => ({
-  type: TOGGLE_VISIBILITY
+export const attempt = () => ({
+  type: ATTEMPT
 })
 
 export const reset = () => ({

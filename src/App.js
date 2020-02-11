@@ -1,34 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Jumbotron, Container, Col, Row } from 'react-bootstrap';
+import { Button, Container, Col, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { connect } from 'react-redux';
+import { start } from './store/actions/actions'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 
 const App = () => {
   return (
     <Container className="App">
-      <Row>
-        <Col xs={12}>
-          <Jumbotron>
-            <h1>Mastermind game</h1>
-            <p>
-              A React-Redux project simulates the Mastermind game
-        </p>
-            <p>
-              Click on the button below to start a new match
-        </p>
-          </Jumbotron>
-        </Col>
-      </Row >
+      <Header />
       <Row>
         <Col>
-          <Button variant="primary" >
+          <Button variant="primary" onClick={start}>
             Start
           </Button>
         </Col>
       </Row>
+      <Footer />
     </Container >
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  start
+}
+export default connect(undefined, mapDispatchToProps)(App);
