@@ -2,9 +2,9 @@ import React from 'react';
 import { Table, Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { start } from '../store/actions/mastermindActions'
+import PropTypes from 'prop-types';
 
-const Board = () => {
-
+const Board = ({ playing, prova}) => {
   return (
     <>
       <Row>
@@ -14,7 +14,11 @@ const Board = () => {
           </Button>
         </Col>
       </Row>
-      <Row>
+      playing : #{playing}#
+      <br/>
+      prova : #{prova}#
+
+        <Row>
         <Col>
           <Table>Table (TODO)</Table>
         </Col>
@@ -23,8 +27,19 @@ const Board = () => {
   )
 }
 
+const mapStateToProps = ({ mastermind }) => ({
+  playing: mastermind.playing,
+  prova: mastermind.prova
+})
+
 const mapDispatchToProps = {
   start
 }
 
-export default connect(undefined, mapDispatchToProps)(Board);
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
+
+// check types
+Board.propTypes = {
+  playing: PropTypes.bool,
+  prova: PropTypes.string
+}

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { mastermindReducer } from './mastermindReducer'
+import { mastermind } from './mastermindReducer'
 
 
-export const reducer = () => combineReducers({
-  mastermindReducer
+export default combineReducers({
+  mastermind
 })
