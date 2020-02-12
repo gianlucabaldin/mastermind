@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
-import { attempts } from './reducers'
-export default combineReducers({
-  attempts
+import { mastermindReducer } from './mastermindReducer'
+
+
+export const reducer = () => combineReducers({
+  mastermindReducer
 })

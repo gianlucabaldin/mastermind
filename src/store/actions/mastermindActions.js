@@ -1,4 +1,4 @@
-import {START, ATTEMPT, RESET} from '../consts/consts'
+import {START, ATTEMPT, RESET} from '../consts/mastermindConsts'
 
 export const start = () => ({
   type: START

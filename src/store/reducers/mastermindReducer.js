@@ -1,11 +1,11 @@
-import { START, ATTEMPT, RESET } from '../consts/consts'
+import { START, ATTEMPT, RESET } from '../consts/mastermindConsts'
 
 const initialState = {
   playing: false,
   attempts: []
 }
 
-export const attempts = (state = initialState, action) => {
+export const mastermindReducer = (state = initialState, action) => {
   switch (action.type) {
     case START:
       return {
