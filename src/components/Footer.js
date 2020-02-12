@@ -1,5 +1,13 @@
 import React from 'react';
+import "../style/footer.css";
+import { Row, Col } from 'react-bootstrap';
 
 export const Footer = () => (
-  <p>Author: Gianluca Baldin</p>
+  <Row>
+    <Col>
+      <div className="footer">
+        <p>Author: Gianluca Baldin</p>
+      </div>
+    </Col>
+  </Row>
 )
