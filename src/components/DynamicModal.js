@@ -38,11 +38,11 @@ Modal.propTypes = {
   reset: PropTypes.func
 }
 
-const mapStateToProps = ({ mastermind }) => ({
-  visible: mastermind.modal.visible,
-  title: mastermind.modal.title,
-  content: mastermind.modal.content,
-  confirmButton: mastermind.modal.confirmButton
+const mapStateToProps = ({ reducer }) => ({
+  visible: reducer.modal.visible,
+  title: reducer.modal.title,
+  content: reducer.modal.content,
+  confirmButton: reducer.modal.confirmButton
 })
 
 const mapDispatchToProps = {

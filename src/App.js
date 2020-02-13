@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
 const App = ({ modalVisible }) => {
+
   return (
     <Container className="App">
       <Header />
@@ -20,8 +21,8 @@ const App = ({ modalVisible }) => {
   );
 }
 
-const mapStateToProps = ({ mastermind }) => ({
-  modalVisible: mastermind.modal.visible
+const mapStateToProps = ({ reducer }) => ({
+  modalVisible: reducer.modal.visible
 })
 
 // check types
