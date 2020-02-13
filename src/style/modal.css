@@ -1,0 +1,4 @@
+/* on mouse hover show the disable cursor symbol */
+.btn-primary.disabled, .btn-primary:disabled {
+  cursor: not-allowed;
+}

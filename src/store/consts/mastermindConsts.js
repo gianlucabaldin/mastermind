@@ -1,3 +1,5 @@
 export const START = 'START'
 export const ATTEMPT = 'ATTEMPT'
 export const RESET = 'RESET'
+export const OPEN_MODAL = 'OPEN_MODAL'
+export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY'
