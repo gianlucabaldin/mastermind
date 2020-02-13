@@ -7,6 +7,5 @@ export const getRandomTriad = () => {
     } while (triad.includes(number));
     triad.push(number);
   }
-  console.log(triad);
   return triad;
 };
