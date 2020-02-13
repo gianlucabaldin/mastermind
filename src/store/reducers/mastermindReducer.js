@@ -1,8 +1,7 @@
 import {
   START,
   ATTEMPT,
-  RESET,
-  OPEN_MODAL,
+  ABORT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
 import { getRandomTriad } from "../../shared/attempts";
@@ -14,9 +13,9 @@ const initialState = {
   secretTriad: [],
   modal: {
     visible: false,
-    title: "title prova",
-    content: "content prova",
-    confirmButton: "Confirm"
+    title: "",
+    content: "",
+    confirmButton: ""
   }
 };
 
@@ -32,23 +31,15 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state
       };
-    case RESET:
+    case ABORT:
       return {
-        ...state
+        ...initialState
       };
     case TOGGLE_MODAL: {
       return {
         ...state,
         modal: {
           visible: !state.modal.visible
-        }
-      };
-    }
-    case OPEN_MODAL: {
-      return {
-        ...state,
-        modal: {
-          visible: true
         }
       };
     }

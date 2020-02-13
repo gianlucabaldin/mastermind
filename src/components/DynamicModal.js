@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleVisibilty, reset } from '../store/actions/mastermindActions'
+import { toggleVisibilty, abort } from '../store/actions/mastermindActions'
 import { Modal, Button } from 'react-bootstrap';
 import '../style/modal.css';
 import PropTypes from 'prop-types';
 
-const DynamicModal = ({ visible, title, content, confirmButton, toggleVisibilty, reset }) => (
+const DynamicModal = ({ visible, title, content, confirmButton, toggleVisibilty, abort }) => (
   <Modal show={visible} onHide={toggleVisibilty}>
     <Modal.Header closeButton>
       <Modal.Title>{title}</Modal.Title>
@@ -19,7 +19,7 @@ const DynamicModal = ({ visible, title, content, confirmButton, toggleVisibilty,
       <Button variant="secondary" onClick={confirmButton} className="mr-2" >
         {confirmButton}
       </Button>
-      <Button variant="primary" onClick={reset} >
+      <Button variant="primary" onClick={abort} >
         Reset
       </Button>
     </Modal.Footer>
@@ -35,7 +35,7 @@ Modal.propTypes = {
   confirmButton: PropTypes.string,
   // actions
   toggleVisibilty: PropTypes.func,
-  reset: PropTypes.func
+  abort: PropTypes.func
 }
 
 const mapStateToProps = ({ reducer }) => ({
@@ -47,7 +47,7 @@ const mapStateToProps = ({ reducer }) => ({
 
 const mapDispatchToProps = {
   toggleVisibilty,
-  reset
+  abort
 }
 
 export default connect(

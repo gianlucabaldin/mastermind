@@ -1,10 +1,10 @@
 import React from "react";
 import { Table, Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { start } from "../store/actions/mastermindActions";
+import { start, abort } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
 
-const Board = ({ playing, start }) => {
+const Board = ({ playing, start, abort }) => {
   if (!playing) {
     return (
       <Row>
@@ -23,6 +23,13 @@ const Board = ({ playing, start }) => {
             <Table>Table (TODO)</Table>
           </Col>
         </Row>
+        <Row>
+        <Col>
+          <Button variant="primary" onClick={() => abort()}>
+            Abort
+          </Button>
+        </Col>
+      </Row>
       </>
     );
   }
@@ -33,7 +40,8 @@ const mapStateToProps = ({ reducer }) => ({
 });
 
 const mapDispatchToProps = {
-  start
+  start,
+  abort
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
