@@ -7,19 +7,23 @@ import PropTypes from 'prop-types';
 
 const DynamicModal = ({ visible, title, content, confirmButton, toggleVisibilty, reset }) => (
   <Modal show={visible} onHide={toggleVisibilty}>
-    <Modal.Header closeButton title={title} />
+    <Modal.Header closeButton>
+      <Modal.Title>{title}</Modal.Title>
+    </Modal.Header>
     <Modal.Body>
       <p>
         Content: {content}
       </p>
-      <Button variant="secondary" onClick={confirmButton} className="mr-2" value={confirmButton} />
     </Modal.Body>
     <Modal.Footer>
+      <Button variant="secondary" onClick={confirmButton} className="mr-2" >
+        {confirmButton}
+      </Button>
       <Button variant="primary" onClick={reset} >
         Reset
       </Button>
     </Modal.Footer>
-  </Modal>
+  </Modal >
 )
 
 // check types
