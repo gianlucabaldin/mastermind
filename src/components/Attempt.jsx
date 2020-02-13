@@ -10,14 +10,14 @@ const Attempt = ({abort}) => (
       <Form.Group as={Col} xs={3} controlId="formGridEmail">
         <Form.Label>Insert your attempt</Form.Label>
       </Form.Group>
-      <Form.Group as={Col} xs={2} controlId="formGridEmail">
-        <Form.Control type="text" placeholder="number 1" />
+      <Form.Group as={Col} xs={1} controlId="formGridEmail">
+        <Form.Control type="text"/>
       </Form.Group>
-      <Form.Group as={Col} xs={2} controlId="formGridEmail">
-        <Form.Control type="text" placeholder="number 2" />
+      <Form.Group as={Col} xs={1} controlId="formGridEmail">
+        <Form.Control type="text"/>
       </Form.Group>
-      <Form.Group as={Col} xs={2} controlId="formGridEmail">
-        <Form.Control type="text" placeholder="number 3" />
+      <Form.Group as={Col} xs={1} controlId="formGridEmail">
+        <Form.Control type="text"/>
       </Form.Group>
     </Form.Row>
     <Button variant="primary" onClick={() => abort()}>
