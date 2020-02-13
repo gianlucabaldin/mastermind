@@ -5,7 +5,7 @@ export const getRandomTriad = () => {
     do {
       number = Math.round(Math.random() * 10);
     } while (triad.includes(number));
-    triad.push(Math.round(Math.random() * 10));
+    triad.push(number);
   }
   console.log(triad);
   return triad;
