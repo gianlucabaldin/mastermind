@@ -2,6 +2,7 @@ import {
   START,
   ATTEMPT,
   ABORT,
+  INSERT_ATTEMPT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
 import { getRandomTriad } from "../../shared/attempts";
@@ -34,6 +35,11 @@ export const reducer = (state = initialState, action) => {
     case ABORT:
       return {
         ...initialState
+      };
+    case INSERT_ATTEMPT:
+      return {
+        ...state,
+        attempts: state.attempts.concat([action.payload])
       };
     case TOGGLE_MODAL: {
       return {
