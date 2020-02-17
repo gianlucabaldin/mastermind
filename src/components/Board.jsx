@@ -5,7 +5,37 @@ import { connect } from "react-redux";
 import { start, abort } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
 
-const Board = ({ playing, start, abort, attempts }) => {
+/**
+ * Check if the attempt contains one or more number are present in the Secret Triad
+ * but not at the right positions
+ * @param {number} secretTriad
+ * @param {number} attempt
+ */
+const checkRightNumber = (secretTriad, attempt) => {
+  let count = 0;
+  for (let i = 1; i <= 3; i++) {
+    let found = secretTriad.indexOf(attempt[i]);
+    if (found === -1) continue;
+    if (found !== i) count++;
+  }
+};
+
+/**
+ * Check if the attempt contains one or more number are present in the Secret Triad
+ * at the right positions
+ * @param {number} secretTriad
+ * @param {number} attempt
+ */
+const checkRightPosition = (secretTriad, attempt) => {
+  let count = 0;
+  for (let i = 1; i <= 3; i++) {
+    let found = secretTriad.indexOf(attempt[i]);
+    if (found === -1) continue;
+    if (found === i) count++;
+  }
+};
+
+const Board = ({ playing, start, abort, attempts, secretTriad }) => {
   if (!playing) {
     return (
       <Row>
@@ -35,12 +65,12 @@ const Board = ({ playing, start, abort, attempts }) => {
               <tbody>
                 {attempts.map((attempt, index) => (
                   <tr>
-                    <td>{index+1}</td>
+                    <td>{index + 1}</td>
                     <td>{attempt[0]}</td>
                     <td>{attempt[1]}</td>
                     <td>{attempt[2]}</td>
-                    <td>to-do</td>
-                    <td>to-do</td>
+                    <td>{checkRightNumber(secretTriad, attempt)}</td>
+                    <td>{checkRightPosition(secretTriad, attempt)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -59,7 +89,8 @@ const Board = ({ playing, start, abort, attempts }) => {
 
 const mapStateToProps = ({ reducer }) => ({
   playing: reducer.playing,
-  attempts: reducer.attempts
+  attempts: reducer.attempts,
+  secretTriad: reducer.secretTriad
 });
 
 const mapDispatchToProps = {
