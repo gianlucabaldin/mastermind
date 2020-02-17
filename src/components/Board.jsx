@@ -4,36 +4,7 @@ import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start, abort } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
-
-/**
- * Check if the attempt contains one or more number are present in the Secret Triad
- * but not at the right positions
- * @param {number} secretTriad
- * @param {number} attempt
- */
-const checkRightNumber = (secretTriad, attempt) => {
-  let count = 0;
-  for (let i = 1; i <= 3; i++) {
-    let found = secretTriad.indexOf(attempt[i]);
-    if (found === -1) continue;
-    if (found !== i) count++;
-  }
-};
-
-/**
- * Check if the attempt contains one or more number are present in the Secret Triad
- * at the right positions
- * @param {number} secretTriad
- * @param {number} attempt
- */
-const checkRightPosition = (secretTriad, attempt) => {
-  let count = 0;
-  for (let i = 1; i <= 3; i++) {
-    let found = secretTriad.indexOf(attempt[i]);
-    if (found === -1) continue;
-    if (found === i) count++;
-  }
-};
+import {checkRightNumber, checkRightPosition} from '../shared/attempts'
 
 const Board = ({ playing, start, abort, attempts, secretTriad }) => {
   if (!playing) {
