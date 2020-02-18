@@ -2,7 +2,7 @@ import React from "react";
 import { Table, Row, Col, Button } from "react-bootstrap";
 import Attempt from "./Attempt";
 import { connect } from "react-redux";
-import { start, abort, attempt } from "../store/actions/mastermindActions";
+import { start, abort } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
 import { checkRightNumber, checkRightPosition } from "../shared/attempts";
 
