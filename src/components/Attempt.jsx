@@ -16,9 +16,9 @@ const Attempt = ({ abort, insertAttempt }) => {
     }
     // setValidated(true);
     insertAttempt([
-      form.elements.n1.value,
-      form.elements.n2.value,
-      form.elements.n3.value
+      Number(form.elements.n1.value),
+      Number(form.elements.n2.value),
+      Number(form.elements.n3.value)
     ]);
   };
 
