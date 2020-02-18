@@ -29,19 +29,19 @@ const Attempt = ({ abort, insertAttempt }) => {
           <Form.Label>Next attempt:</Form.Label>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n1">
-          <Form.Control type="text" />
+          <Form.Control type="number"/>
           <Form.Control.Feedback type="invalid">
             Insert number!
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n2">
-          <Form.Control type="text" />
+          <Form.Control type="number" />
           <Form.Control.Feedback type="invalid">
             Insert number!
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n3">
-          <Form.Control type="text" />
+          <Form.Control type="number" />
           <Form.Control.Feedback type="invalid">
             Insert number!
           </Form.Control.Feedback>
