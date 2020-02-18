@@ -1,13 +1,19 @@
 import { DEFAULT_ATTEMPT_LENGTH } from "./consts";
 
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 export const getRandomTriad = () => {
   let triad = [];
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
-    let number;
+    let randomInt;
     do {
-      number = Math.round(Math.random() * 10);
-    } while (triad.includes(number));
-    triad.push(number);
+      randomInt = getRandomInt(1,10);
+    } while (triad.includes(randomInt));
+    triad.push(randomInt);
   }
   return triad;
 };
