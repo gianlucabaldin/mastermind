@@ -8,18 +8,18 @@ const Attempt = ({ abort, insertAttempt }) => {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = event => {
-    debugger;
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === false) {
       event.stopPropagation();
-      insertAttempt(
-        [form.elements.n1.value],
-        [form.elements.n2.value],
-        [form.elements.n3.value]
-      );
+      setValidated(false);
     }
-    setValidated(true);
+    // setValidated(true);
+    insertAttempt([
+      form.elements.n1.value,
+      form.elements.n2.value,
+      form.elements.n3.value
+    ]);
   };
 
   return (
