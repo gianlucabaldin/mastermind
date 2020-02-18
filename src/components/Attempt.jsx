@@ -6,63 +6,86 @@ import PropTypes from "prop-types";
 import "../style/attempt.css";
 
 const Attempt = ({ abort, insertAttempt }) => {
-  const [validated, setValidated] = useState(false);
+  const emptyAttempt = {
+    n1: "",
+    n2: "",
+    n3: ""
+  }
+  const [invalidMessage, setInvalidMessage] = useState();
+  const [attempt, setAttempt] = useState(emptyAttempt);
+
+  const updateField = e => {
+    setAttempt({
+      ...attempt,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = event => {
-    const form = event.currentTarget;
     event.preventDefault();
-
-    if (form.checkValidity() === false) {
-      event.stopPropagation();
-      setValidated(true);
-      return;
-    } else {
-      insertAttempt([
-        Number(form.elements.n1.value),
-        Number(form.elements.n2.value),
-        Number(form.elements.n3.value)
-      ]);
-      setValidated(false);
-      form.reset(); // blank the values
-      return;
+    for (let n in attempt) {
+      const element = attempt[n];
+      if (isNaN(element) || Number(element) <= 0 || Number(element) > 9) {
+        setInvalidMessage(
+          "Error: please input three numbers within range [1-9]"
+        );
+        return;
+      }
     }
+
+    insertAttempt([
+      Number(attempt.n1),
+      Number(attempt.n2),
+      Number(attempt.n3)
+    ]);
+    setInvalidMessage("");
+    setAttempt(emptyAttempt);
+    return;
   };
 
   return (
-    <Form validated={validated} onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Row>
         <Form.Group as={Col} xs={3}>
           <Form.Label>Next attempt:</Form.Label>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n1">
-          <Form.Control type="text" required />
-          <Form.Control.Feedback type="invalid">
-            Insert number [1-9]!
-          </Form.Control.Feedback>
+          <Form.Control
+            type="text"
+            name="n1"
+            required
+            value={attempt.n1}
+            onChange={updateField}
+          />
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n2">
-          <Form.Control type="text" required />
-          <Form.Control.Feedback type="invalid">
-            Insert number [1-9]!
-          </Form.Control.Feedback>
+          <Form.Control
+            type="text"
+            name="n2"
+            required
+            value={attempt.n2}
+            onChange={updateField}
+          />
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n3">
-          <Form.Control type="text" required />
-          <Form.Control.Feedback type="invalid">
-            Insert number [1-9]!
-          </Form.Control.Feedback>
+          <Form.Control
+            type="text"
+            name="n3"
+            required
+            value={attempt.n3}
+            onChange={updateField}
+          />
         </Form.Group>
         <Form.Group as={Col} xs={2}>
           <Button
             variant="primary"
             type="submit"
-            // onClick={() =>
-            // insertAttempt([ref.n1.value], [n2.value], [n3.value])
-            // handleSubmit()
-            // }
           >
             Insert
           </Button>
+        </Form.Group>
+        <Form.Group controlId="error">
+          <Form.Label>{invalidMessage}</Form.Label>
         </Form.Group>
       </Form.Row>
       <Button variant="primary" onClick={() => abort()}>
