@@ -13,37 +13,38 @@ const Attempt = ({ abort, insertAttempt }) => {
     if (form.checkValidity() === false) {
       event.stopPropagation();
       setValidated(false);
+    } else {
+      insertAttempt([
+        Number(form.elements.n1.value),
+        Number(form.elements.n2.value),
+        Number(form.elements.n3.value)
+      ]);
     }
-    // setValidated(true);
-    insertAttempt([
-      Number(form.elements.n1.value),
-      Number(form.elements.n2.value),
-      Number(form.elements.n3.value)
-    ]);
+    setValidated(true);
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form validated={validated} onSubmit={handleSubmit}>
       <Form.Row>
         <Form.Group as={Col} xs={3}>
           <Form.Label>Next attempt:</Form.Label>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n1">
-          <Form.Control type="number"/>
+          <Form.Control type="text" required />
           <Form.Control.Feedback type="invalid">
-            Insert number!
+            Insert number [1-9]!
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n2">
-          <Form.Control type="number" />
+          <Form.Control type="text" required />
           <Form.Control.Feedback type="invalid">
-            Insert number!
+            Insert number [1-9]!
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group required as={Col} xs={1} controlId="n3">
-          <Form.Control type="number" />
+          <Form.Control type="text" required />
           <Form.Control.Feedback type="invalid">
-            Insert number!
+            Insert number [1-9]!
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} xs={2}>
