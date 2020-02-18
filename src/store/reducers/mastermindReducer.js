@@ -10,6 +10,7 @@ import { getRandomTriad } from "../../shared/attempts";
 const initialState = {
   playing: false,
   attempts: [[1,2,3], [3,4,5]],
+  attemptsCounter: 0,
   prova: "ciao",
   secretTriad: [],
   modal: {
@@ -30,7 +31,8 @@ export const reducer = (state = initialState, action) => {
       };
     case ATTEMPT:
       return {
-        ...state
+        ...state,
+        attemptsCounter: state.attemptsCounter++
       };
     case ABORT:
       return {
