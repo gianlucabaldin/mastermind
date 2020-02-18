@@ -9,9 +9,8 @@ import { getRandomTriad } from "../../shared/attempts";
 
 const initialState = {
   playing: false,
-  attempts: [[1,2,3], [3,4,5]],
+  attempts: [],
   attemptsCounter: 0,
-  prova: "ciao",
   secretTriad: [],
   modal: {
     visible: false,

@@ -21,10 +21,11 @@ export const getRandomTriad = () => {
 export const checkRightNumber = (secretTriad, attempt) => {
   let count = 0;
   for (let i = 1; i <= DEFAULT_ATTEMPT_LENGTH; i++) {
-    let found = secretTriad.indexOf(attempt[i]);
+    let found = secretTriad.indexOf(attempt[i-1]);
     if (found === -1) continue;
     if (found !== i) count++;
   }
+  return count;
 };
 
 /**
@@ -36,8 +37,9 @@ export const checkRightNumber = (secretTriad, attempt) => {
 export const checkRightPosition = (secretTriad, attempt) => {
   let count = 0;
   for (let i = 1; i <= DEFAULT_ATTEMPT_LENGTH; i++) {
-    let found = secretTriad.indexOf(attempt[i]);
+    let found = secretTriad.indexOf(attempt[i-1]);
     if (found === -1) continue;
     if (found === i) count++;
   }
+  return count;
 };
