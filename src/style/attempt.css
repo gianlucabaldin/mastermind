@@ -1,0 +1,6 @@
+/* override Bootstrap value */
+.form-control.is-valid, .was-validated .form-control:valid {
+  border-color: initial;
+  padding-right: 0;
+  background-image: none;
+}
