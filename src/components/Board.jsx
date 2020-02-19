@@ -37,7 +37,7 @@ const Board = ({ playing, start, abort, attempts, secretTriad }) => {
                 </thead>
                 <tbody>
                   {attempts.map((attempt, index) => (
-                    <tr>
+                    <tr key={index}>
                       <td># {index + 1}</td>
                       <td>{attempt[0]}</td>
                       <td>{attempt[1]}</td>
