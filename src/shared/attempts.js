@@ -1,17 +1,19 @@
 import { DEFAULT_ATTEMPT_LENGTH } from "./consts";
+import { store } from "../index";
+import { toggleModal } from "../store/actions/mastermindActions";
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
+};
 
 export const getRandomTriad = () => {
   let triad = [];
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
     let randomInt;
     do {
-      randomInt = getRandomInt(1,10);
+      randomInt = getRandomInt(1, 10);
     } while (triad.includes(randomInt));
     triad.push(randomInt);
   }
@@ -31,6 +33,10 @@ export const checkRightNumber = (secretTriad, attempt) => {
     if (found === -1) continue;
     if (found === i) count++;
   }
+
+  if (count === 3) {
+    endGame();
+  }
   return count;
 };
 
@@ -48,4 +54,14 @@ export const checkRightPosition = (secretTriad, attempt) => {
     if (found !== i) count++;
   }
   return count;
+};
+
+const endGame = () => {
+  let { attempts } = store.getState().reducer;
+  store.dispatch(
+    toggleModal({
+      title: "Congratulations!",
+      content: `You guessed the number in ${attempts.length} attempts!`
+    })
+  );
 };

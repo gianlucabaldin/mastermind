@@ -16,8 +16,7 @@ const initialState = {
   modal: {
     visible: false,
     title: "",
-    content: "",
-    confirmButton: ""
+    content: ""
   }
 };
 
@@ -29,10 +28,10 @@ export const reducer = (state = initialState, action) => {
         secretTriad: getRandomTriad(),
         playing: true
       };
-    case ATTEMPT:
-      return {
-        ...state,
-        attemptsCounter: state.attemptsCounter++
+    case ATTEMPT: // TO REMOVE ?? USE attempts.length
+      return { // TO REMOVE ?? USE attempts.length
+        ...state, // TO REMOVE ?? USE attempts.length
+        attemptsCounter: state.attemptsCounter++ // TO REMOVE ?? USE attempts.length
       };
     case ABORT:
       return {
@@ -41,13 +40,15 @@ export const reducer = (state = initialState, action) => {
     case INSERT_ATTEMPT:
       return {
         ...state,
-        attempts: state.attempts.concat([action.payload])
+        attempts: state.attempts.concat([action.payload]),
+        won: action.payload === state.secretTriad
       };
     case TOGGLE_MODAL: {
       return {
         ...state,
         modal: {
-          visible: !state.modal.visible
+          visible: !state.modal.visible,
+          ...action.payload
         }
       };
     }

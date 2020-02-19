@@ -23,6 +23,7 @@ export const insertAttempt = (newAttempt) => ({
   payload: newAttempt
 });
 
-export const toggleVisibilty = () => ({
-  type: TOGGLE_MODAL
+export const toggleModal = (modalProps) => ({
+  type: TOGGLE_MODAL,
+  payload: modalProps
 });

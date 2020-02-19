@@ -7,7 +7,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducers/index';
 
-const store = createStore(
+export const store = createStore(
   reducer,
   // to enable Redux plugin within the browser
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
