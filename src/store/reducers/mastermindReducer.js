@@ -1,7 +1,8 @@
 import {
   START,
   INSERT_ATTEMPT,
-  TOGGLE_MODAL
+  TOGGLE_MODAL,
+  RESET
 } from "../consts/mastermindConsts";
 import { getRandomCombination } from "../../shared/coreFunctions";
 
@@ -40,6 +41,10 @@ export const reducer = (state = initialState, action) => {
         }
       };
     }
+    case RESET:
+      return {
+        ...initialState
+      };
     default:
       return state;
   }

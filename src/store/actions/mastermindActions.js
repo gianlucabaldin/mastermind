@@ -1,11 +1,16 @@
 import {
   START,
   INSERT_ATTEMPT,
-  TOGGLE_MODAL
+  TOGGLE_MODAL,
+  RESET
 } from "../consts/mastermindConsts";
 
 export const start = () => ({
   type: START
+});
+
+export const reset = () => ({
+  type: RESET
 });
 
 export const insertAttempt = newAttempt => ({

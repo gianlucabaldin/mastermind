@@ -1,7 +1,7 @@
 ## TODO
-- check Day of guessing - 1 ?!?!?
 - fix footer layout
 - fix column width
+- review css files
 - method comments
 - remove React-Bootstrap and use only Bootstrap ?
 - insert secret trial length

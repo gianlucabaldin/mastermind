@@ -62,29 +62,33 @@ export const checkRightPosition = (secretCombination, attempt) => {
  */
 const endGame = () => {
   const { attempts, startingTime } = store.getState().reducer;
-  const diff = Date.now() - startingTime;
-  const dateDiff = new Date(diff);
-  debugger;
-  const stringDiff =
-    dateDiff.getDate() +
-    " days, " +
-    dateDiff.getHours() +
-    " hours, " +
-    dateDiff.getMinutes() +
-    " minutes and " +
-    dateDiff.getSeconds() +
-    " seconds";
+
   store.dispatch(
     toggleModal({
       title: "Congratulations :)",
       content: (
         <>
-          <p>You guessed the number in {attempts.length} attempts!</p>
-          <p>You took {stringDiff}.</p>
+          <p>
+            You guessed the number in {attempts.length} attempts!
+            <br />
+            You took {calculateTimeDiff(startingTime)}.
+          </p>
         </>
       )
     })
   );
+};
+
+/**
+ * Calculates the game duration and returs a human-readable string
+ */
+const calculateTimeDiff = startingTime => {
+  const now = Date.now();
+  const diff = now - startingTime;
+  const hoursDifference = Math.floor(diff / 1000 / 60 / 60);
+  const minutesDifference = Math.floor(diff / 1000 / 60);
+  const secondsDifference = Math.floor(diff / 1000);
+  return ` ${hoursDifference} hours, ${minutesDifference} minutes and ${secondsDifference} seconds`;
 };
 
 /**
