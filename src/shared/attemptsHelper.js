@@ -112,7 +112,12 @@ export const checkRepeteadValues = attempt => {
   return duplicateList.length > 0;
 };
 
-
+/**
+ * Method check the attempts number, and if it's equal to the MAX_ATTEMPTS_NUM
+ * defined in const file, it will raise a modal to comunicate it and the secret
+ * combination. Once the modal is dismissed, the application is reset to its
+ * initialState
+ */
 export const checkAttempts = () => {
   const { attempts, secretTriad } = store.getState().reducer;
   if(attempts && attempts.length === MAX_ATTEMPTS_NUM){
