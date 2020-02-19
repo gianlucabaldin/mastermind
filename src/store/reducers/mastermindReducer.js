@@ -11,6 +11,7 @@ const initialState = {
   playing: false,
   attempts: [],
   won: false,
+  startingTime: Date.now(),
   attemptsCounter: 0,
   secretTriad: [],
   modal: {

@@ -1,3 +1,4 @@
+import React from "react";
 import { DEFAULT_ATTEMPT_LENGTH } from "./consts";
 import { store } from "../index";
 import { toggleModal } from "../store/actions/mastermindActions";
@@ -33,8 +34,8 @@ export const checkRightNumber = (secretTriad, attempt) => {
     if (found === -1) continue;
     if (found === i) count++;
   }
-
-  if (count === 3) {
+  // check if guessed
+  if (count === DEFAULT_ATTEMPT_LENGTH) {
     endGame();
   }
   return count;
@@ -56,12 +57,32 @@ export const checkRightPosition = (secretTriad, attempt) => {
   return count;
 };
 
+/**
+ * Combination guessed: show the modal with total time and attempts
+ */
 const endGame = () => {
-  let { attempts } = store.getState().reducer;
+  const { attempts, startingTime } = store.getState().reducer;
+  const diff = Date.now() - startingTime;
+  const dateDiff = new Date(diff);
+  debugger;
+  const stringDiff =
+    dateDiff.getDate() +
+    " days, " +
+    dateDiff.getHours() +
+    " hours, " +
+    dateDiff.getMinutes() +
+    " minutes and " +
+    dateDiff.getSeconds() +
+    " seconds";
   store.dispatch(
     toggleModal({
       title: "Congratulations!",
-      content: `You guessed the number in ${attempts.length} attempts!`
+      content: (
+        <>
+          <p>You guessed the number in {attempts.length} attempts!</p>
+          <p>You took {stringDiff}.</p>
+        </>
+      )
     })
   );
 };
