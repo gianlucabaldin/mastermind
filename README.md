@@ -1,6 +1,6 @@
 ## TODO
-- modal if reached max length
-- remove ATTEMPT & WON (?)
+- check Day of guessing - 1 ?!?!?
+- on abort open popup with combination
 - fix footer layout
 - method comments
 - remove React-Bootstrap and use only Bootstrap ?
@@ -12,7 +12,7 @@
   - insert stubbed combination and check right numbers & positions
   - insert over
 - README.md file project full description
-- Heroku deploy
+- Heroku deploy ?
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

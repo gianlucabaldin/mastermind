@@ -1,5 +1,5 @@
 import React from "react";
-import { DEFAULT_ATTEMPT_LENGTH } from "./consts";
+import { DEFAULT_ATTEMPT_LENGTH, MAX_ATTEMPTS_NUM } from "./consts";
 import { store } from "../index";
 import { toggleModal } from "../store/actions/mastermindActions";
 
@@ -111,3 +111,21 @@ export const checkRepeteadValues = attempt => {
   );
   return duplicateList.length > 0;
 };
+
+
+export const checkAttempts = () => {
+  const { attempts, secretTriad } = store.getState().reducer;
+  if(attempts && attempts.length === MAX_ATTEMPTS_NUM){
+    store.dispatch(
+      toggleModal({
+        title: "Yuo lost! :(",
+        content: (
+          <>
+            <p>You haven't guessed the secret combination in {MAX_ATTEMPTS_NUM} attempts!</p>
+            <p>You secret combination was {secretTriad}.</p>
+          </>
+        )
+      })
+    );
+  }
+}

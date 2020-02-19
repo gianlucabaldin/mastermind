@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import { abort, insertAttempt } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
 import "../style/attempt.css";
-import { checkRepeteadValues, checkInputsValues } from "../shared/attemptsHelper";
+import {
+  checkRepeteadValues,
+  checkInputsValues,
+  checkAttempts
+} from "../shared/attemptsHelper";
 
 const Attempt = ({ abort, insertAttempt }) => {
   const emptyAttempt = {
@@ -37,6 +41,7 @@ const Attempt = ({ abort, insertAttempt }) => {
     }
     // save the compination into the store
     insertAttempt([attempt.n1, attempt.n2, attempt.n3]);
+    checkAttempts();
     setInvalidMessage("");
     setAttempt(emptyAttempt);
     return;
