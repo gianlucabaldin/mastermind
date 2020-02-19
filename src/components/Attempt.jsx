@@ -9,6 +9,7 @@ import {
   checkInputsValues,
   checkAttempts
 } from "../shared/attemptsHelper";
+import PropTypes from "prop-types";
 
 const Attempt = ({ insertAttempt }) => {
   const emptyAttempt = {
@@ -106,6 +107,11 @@ const Attempt = ({ insertAttempt }) => {
 
 const mapDispatchToProps = {
   insertAttempt
+};
+
+// check types
+Attempt.propTypes = {
+  insertAttempt: PropTypes.func
 };
 
 export default connect(undefined, mapDispatchToProps)(Attempt);

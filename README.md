@@ -1,7 +1,7 @@
 ## TODO
 - check Day of guessing - 1 ?!?!?
-- on abort open popup with combination
 - fix footer layout
+- fix column width
 - method comments
 - remove React-Bootstrap and use only Bootstrap ?
 - insert secret trial length

@@ -29,8 +29,7 @@ Modal.propTypes = {
   title: PropTypes.string,
   content: PropTypes.string,
   // actions
-  toggleModal: PropTypes.func,
-  abort: PropTypes.func
+  toggleModal: PropTypes.func
 };
 
 const mapStateToProps = ({ reducer }) => ({
