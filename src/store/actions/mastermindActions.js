@@ -1,6 +1,5 @@
 import {
   START,
-  ABORT,
   INSERT_ATTEMPT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
@@ -9,16 +8,12 @@ export const start = () => ({
   type: START
 });
 
-export const abort = () => ({
-  type: ABORT
-});
-
-export const insertAttempt = (newAttempt) => ({
+export const insertAttempt = newAttempt => ({
   type: INSERT_ATTEMPT,
   payload: newAttempt
 });
 
-export const toggleModal = (modalProps) => ({
+export const toggleModal = modalProps => ({
   type: TOGGLE_MODAL,
   payload: modalProps
 });

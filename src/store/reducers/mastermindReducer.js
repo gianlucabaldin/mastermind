@@ -1,6 +1,5 @@
 import {
   START,
-  ABORT,
   INSERT_ATTEMPT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
@@ -26,10 +25,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         secretTriad: getRandomTriad(),
         playing: true
-      };
-    case ABORT:
-      return {
-        ...initialState
       };
     case INSERT_ATTEMPT:
       return {

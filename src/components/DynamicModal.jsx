@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleModal, abort } from "../store/actions/mastermindActions";
+import { toggleModal } from "../store/actions/mastermindActions";
+import { abort } from "../shared/attemptsHelper";
 import { Modal, Button } from "react-bootstrap";
 import "../style/modal.css";
 import PropTypes from "prop-types";
 
-const DynamicModal = ({ visible, title, content, toggleModal, abort }) => (
+const DynamicModal = ({ visible, title, content, toggleModal }) => (
   <Modal show={visible} onHide={toggleModal}>
     <Modal.Header closeButton>
       <Modal.Title>{title}</Modal.Title>
@@ -39,8 +40,7 @@ const mapStateToProps = ({ reducer }) => ({
 });
 
 const mapDispatchToProps = {
-  toggleModal,
-  abort
+  toggleModal
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DynamicModal);

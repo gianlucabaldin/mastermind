@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
-import { abort, insertAttempt } from "../store/actions/mastermindActions";
-import PropTypes from "prop-types";
+import { insertAttempt } from "../store/actions/mastermindActions";
+import { abort } from "../shared/attemptsHelper";
 import "../style/attempt.css";
 import {
   checkRepeteadValues,
@@ -10,7 +10,7 @@ import {
   checkAttempts
 } from "../shared/attemptsHelper";
 
-const Attempt = ({ abort, insertAttempt }) => {
+const Attempt = ({ insertAttempt }) => {
   const emptyAttempt = {
     n1: "",
     n2: "",
@@ -105,13 +105,7 @@ const Attempt = ({ abort, insertAttempt }) => {
 };
 
 const mapDispatchToProps = {
-  insertAttempt,
-  abort
-};
-
-// check types
-Attempt.propTypes = {
-  abort: PropTypes.func
+  insertAttempt
 };
 
 export default connect(undefined, mapDispatchToProps)(Attempt);

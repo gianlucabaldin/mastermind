@@ -76,7 +76,7 @@ const endGame = () => {
     " seconds";
   store.dispatch(
     toggleModal({
-      title: "Congratulations!",
+      title: "Congratulations :)",
       content: (
         <>
           <p>You guessed the number in {attempts.length} attempts!</p>
@@ -120,17 +120,39 @@ export const checkRepeteadValues = attempt => {
  */
 export const checkAttempts = () => {
   const { attempts, secretTriad } = store.getState().reducer;
-  if(attempts && attempts.length === MAX_ATTEMPTS_NUM){
+  if (attempts && attempts.length === MAX_ATTEMPTS_NUM) {
     store.dispatch(
       toggleModal({
         title: "Yuo lost! :(",
         content: (
           <>
-            <p>You haven't guessed the secret combination in {MAX_ATTEMPTS_NUM} attempts!</p>
+            <p>
+              You haven't guessed the secret combination in {MAX_ATTEMPTS_NUM}{" "}
+              attempts!
+            </p>
             <p>You secret combination was {secretTriad}.</p>
           </>
         )
       })
     );
   }
-}
+};
+
+/**
+ * Method opens the modal after "Abort" is pressed, showing the secret combination
+ * to the user
+ */
+export const abort = () => {
+  const { secretTriad } = store.getState().reducer;
+  store.dispatch(
+    toggleModal({
+      title: "Game aborted :(",
+      content: (
+        <>
+          <p>You chose to abort the session game</p>
+          <p>You secret combination was {secretTriad}.</p>
+        </>
+      )
+    })
+  );
+};
