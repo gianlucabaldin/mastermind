@@ -5,6 +5,7 @@
   background-image: none;
 }
 
+/* the error message in case combination is invalid */
 .attempt__invalidMessage {
   color: red;
   font-weight: 500;
