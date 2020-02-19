@@ -1,6 +1,5 @@
 ## TODO
-- insert check no reps
-- insert time count / modal if reached max length
+- modal if reached max length
 - remove ATTEMPT & WON (?)
 - fix footer layout
 - method comments

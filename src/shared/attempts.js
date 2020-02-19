@@ -86,3 +86,28 @@ const endGame = () => {
     })
   );
 };
+
+/**
+ * Check inputs - must be integer and in range [1-9]
+ * @param {array} attempt the attempt
+ */
+export const checkInputsValues = attempt => {
+  for (let n in attempt) {
+    const element = attempt[n];
+    if (isNaN(element) || element <= 0 || element > 9) {
+      return false;
+    }
+  }
+  return true;
+};
+
+/**
+ * Look for repeated values within the attempt - not allowed in this game version
+ * @param {array} attempt the attempt
+ */
+export const checkRepeteadValues = attempt => {
+  const duplicateList = attempt.filter(
+    (item, index) => attempt.indexOf(item) !== index
+  );
+  return duplicateList.length > 0;
+};

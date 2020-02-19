@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { abort, insertAttempt } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
 import "../style/attempt.css";
+import { checkRepeteadValues, checkInputsValues } from "../shared/attempts";
 
 const Attempt = ({ abort, insertAttempt }) => {
   const emptyAttempt = {
@@ -14,25 +15,28 @@ const Attempt = ({ abort, insertAttempt }) => {
   const [invalidMessage, setInvalidMessage] = useState();
   const [attempt, setAttempt] = useState(emptyAttempt);
 
+  // saves the input value
   const updateField = e => {
     setAttempt({
       ...attempt,
-      [e.target.name]: e.target.value
+      [e.target.name]: Number(e.target.value)
     });
   };
 
+  // Check inputs correctness and if the combination is guessed
   const handleSubmit = event => {
     event.preventDefault();
-    for (let n in attempt) {
-      const element = attempt[n];
-      if (isNaN(element) || Number(element) <= 0 || Number(element) > 9) {
-        setInvalidMessage(
-          "Error: please input three numbers within range [1-9]"
-        );
-        return;
-      }
+    if (checkInputsValues()) {
+      setInvalidMessage("Error: please input three numbers within range [1-9]");
     }
-    insertAttempt([Number(attempt.n1), Number(attempt.n2), Number(attempt.n3)]);
+    if (checkRepeteadValues([attempt.n1, attempt.n2, attempt.n3])) {
+      setInvalidMessage(
+        "You have inserted a repeated value (not allowed in this version)"
+      );
+      return;
+    }
+    // save the compination into the store
+    insertAttempt([attempt.n1, attempt.n2, attempt.n3]);
     setInvalidMessage("");
     setAttempt(emptyAttempt);
     return;
@@ -93,19 +97,14 @@ const Attempt = ({ abort, insertAttempt }) => {
   );
 };
 
-// const mapStateToProps = ({ reducer }) => ({
-//   playing: reducer.playing
-// });
-
 const mapDispatchToProps = {
   insertAttempt,
   abort
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Attempt);
-export default connect(undefined, mapDispatchToProps)(Attempt);
-
 // check types
 Attempt.propTypes = {
   abort: PropTypes.func
 };
+
+export default connect(undefined, mapDispatchToProps)(Attempt);
