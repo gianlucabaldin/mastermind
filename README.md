@@ -36,10 +36,12 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## TODO
-- fix column width
-- insert secret trial length
-  - verify all stands dynamically (render jsx, algorithms, etc)
 - Test - Jest/Enzyme or Cypress?
-  - should start new game
-  - insert stubbed combination and check right numbers & positions
+  - should start a new game and see the board
+  - should start a new game, abort and check the popup is show
+  - should start a new game, insert number > 9 or < 1 and check error is shown
+  - should start a new game, insert char and check error is shown
+  - should start a new game, insert stubbed combination and check right numbers & positions
+  - should start a new game, insert 10 attempts and check the popup is show
+- manage secret trial length / verify all stands dynamically (render jsx, algorithms, etc)
 - Heroku deploy ?
