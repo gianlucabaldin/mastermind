@@ -3,7 +3,7 @@ import {
   INSERT_ATTEMPT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
-import { getRandomCombination } from "../../shared/attemptsHelper";
+import { getRandomCombination } from "../../shared/coreFunctions";
 
 const initialState = {
   playing: false,

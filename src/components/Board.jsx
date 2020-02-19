@@ -3,9 +3,8 @@ import { Table, Row, Col, Button } from "react-bootstrap";
 import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start } from "../store/actions/mastermindActions";
-import { checkRightNumber, checkRightPosition } from "../shared/attemptsHelper";
+import { checkRightNumber, checkRightPosition } from "../shared/coreFunctions";
 import PropTypes from "prop-types";
-
 const Board = ({ playing, start, attempts, secretCombination }) => {
   if (!playing) {
     return (
@@ -20,7 +19,6 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
   } else {
     return (
       <>
-        <Row>secretCombination = {secretCombination}--> REMOVE ME</Row>
         {attempts && attempts.length > 0 && (
           <Row>
             <Col>
@@ -76,7 +74,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Board);
 // check types
 Board.propTypes = {
   playing: PropTypes.bool,
-  start: PropTypes.bool,
+  start: PropTypes.func,
   attempts: PropTypes.array,
   secretCombination: PropTypes.array
 };

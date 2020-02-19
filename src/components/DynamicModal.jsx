@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleModal } from "../store/actions/mastermindActions";
-import { abort } from "../shared/attemptsHelper";
+import { abort } from "../shared/coreFunctions";
 import { Modal, Button } from "react-bootstrap";
 import "../style/modal.css";
 import PropTypes from "prop-types";

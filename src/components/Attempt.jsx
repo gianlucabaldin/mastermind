@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { insertAttempt } from "../store/actions/mastermindActions";
-import { abort } from "../shared/attemptsHelper";
+import { abort } from "../shared/coreFunctions";
 import "../style/attempt.css";
 import {
   checkRepeteadValues,
   checkInputsValues,
   checkAttempts
-} from "../shared/attemptsHelper";
+} from "../shared/coreFunctions";
 import PropTypes from "prop-types";
 
 const Attempt = ({ insertAttempt }) => {
