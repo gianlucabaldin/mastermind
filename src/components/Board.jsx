@@ -3,10 +3,10 @@ import { Table, Row, Col, Button } from "react-bootstrap";
 import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start } from "../store/actions/mastermindActions";
+import { checkRightNumber, checkRightPosition } from "../shared/attemptsHelper";
 import PropTypes from "prop-types";
-import { checkRightNumber, checkRightPosition, abort } from "../shared/attemptsHelper";
 
-const Board = ({ playing, start, abort, attempts, secretTriad }) => {
+const Board = ({ playing, start, attempts, secretTriad }) => {
   if (!playing) {
     return (
       <Row>
@@ -68,13 +68,15 @@ const mapStateToProps = ({ reducer }) => ({
 });
 
 const mapDispatchToProps = {
-  start,
-  abort
+  start
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
 
 // check types
 Board.propTypes = {
-  playing: PropTypes.bool
+  playing: PropTypes.bool,
+  start: PropTypes.bool,
+  attempts: PropTypes.array,
+  secretTriad: PropTypes.array
 };
