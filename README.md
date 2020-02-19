@@ -1,3 +1,20 @@
+## TODO
+- insert check no reps
+- insert time count / modal if reached max length
+- remove ATTEMPT
+- fix footer layout
+- method comments
+- remove React-Bootstrap and use only Bootstrap ?
+- insert secret trial length
+  - change name(s) from Trial to Combination
+  - verify all stands dynamically (render jsx, algorithms, etc)
+- Test - Jest/Enzyme or Cypress?
+  - should start new game
+  - insert stubbed combination and check right numbers & positions
+  - insert over
+- README.md file project full description
+- Heroku deploy
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
