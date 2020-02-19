@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Tecnologies / Libraries etc
 - NodeJS --> environment
 - Create React App --> project starting point
-- ReactJS / JS ES6 -> programming language
+- ReactJS / JS ES6 --> programming language
 - Redux --> app state management
 - React-Bootstrap --> (CSS) styling
 
