@@ -1,6 +1,5 @@
 import {
   START,
-  ATTEMPT,
   ABORT,
   INSERT_ATTEMPT,
   TOGGLE_MODAL
@@ -28,11 +27,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         secretTriad: getRandomTriad(),
         playing: true
-      };
-    case ATTEMPT: // TO REMOVE ?? USE attempts.length
-      return { // TO REMOVE ?? USE attempts.length
-        ...state, // TO REMOVE ?? USE attempts.length
-        attemptsCounter: state.attemptsCounter++ // TO REMOVE ?? USE attempts.length
       };
     case ABORT:
       return {

@@ -1,6 +1,5 @@
 import {
   START,
-  ATTEMPT,
   ABORT,
   INSERT_ATTEMPT,
   TOGGLE_MODAL
@@ -8,10 +7,6 @@ import {
 
 export const start = () => ({
   type: START
-});
-
-export const attempt = () => ({
-  type: ATTEMPT
 });
 
 export const abort = () => ({
