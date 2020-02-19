@@ -1,7 +1,7 @@
 ## TODO
 - insert check no reps
 - insert time count / modal if reached max length
-- remove ATTEMPT
+- remove ATTEMPT & WON (?)
 - fix footer layout
 - method comments
 - remove React-Bootstrap and use only Bootstrap ?

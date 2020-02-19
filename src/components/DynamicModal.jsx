@@ -26,7 +26,7 @@ Modal.propTypes = {
   // variables
   visible: PropTypes.bool,
   title: PropTypes.string,
-  content: PropTypes.string
+  content: PropTypes.string,
   // actions
   toggleModal: PropTypes.func,
   abort: PropTypes.func
