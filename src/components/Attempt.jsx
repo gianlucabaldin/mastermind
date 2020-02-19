@@ -83,11 +83,13 @@ const Attempt = ({ abort, insertAttempt }) => {
               </Button>
             </Form.Group>
           </Form.Row>
-          <Form.Row className="justify-content-md-center">
-            <Form.Group controlId="error" className="attempt__invalidMessage">
-              <Form.Label>{invalidMessage}</Form.Label>
-            </Form.Group>
-          </Form.Row>
+          {invalidMessage && invalidMessage !== "" && (
+            <Form.Row className="justify-content-md-center">
+              <Form.Group controlId="error" className="attempt__invalidMessage">
+                <Form.Label>{invalidMessage}</Form.Label>
+              </Form.Group>
+            </Form.Row>
+          )}
           <Button variant="primary" onClick={() => abort()}>
             Abort
           </Button>
