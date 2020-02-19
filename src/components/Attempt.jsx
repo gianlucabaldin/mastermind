@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { abort, insertAttempt } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
 import "../style/attempt.css";
-import { checkRepeteadValues, checkInputsValues } from "../shared/attempts";
+import { checkRepeteadValues, checkInputsValues } from "../shared/attemptsHelper";
 
 const Attempt = ({ abort, insertAttempt }) => {
   const emptyAttempt = {

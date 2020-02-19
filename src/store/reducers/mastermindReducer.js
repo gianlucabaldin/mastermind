@@ -4,7 +4,7 @@ import {
   INSERT_ATTEMPT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
-import { getRandomTriad } from "../../shared/attempts";
+import { getRandomTriad } from "../../shared/attemptsHelper";
 
 const initialState = {
   playing: false,

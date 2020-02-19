@@ -4,7 +4,7 @@ import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start, abort } from "../store/actions/mastermindActions";
 import PropTypes from "prop-types";
-import { checkRightNumber, checkRightPosition } from "../shared/attempts";
+import { checkRightNumber, checkRightPosition } from "../shared/attemptsHelper";
 
 const Board = ({ playing, start, abort, attempts, secretTriad }) => {
   if (!playing) {
