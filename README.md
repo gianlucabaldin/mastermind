@@ -36,16 +36,10 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## TODO
-- fix footer layout
 - fix column width
-- review css files
-- method comments
-- remove React-Bootstrap and use only Bootstrap ?
 - insert secret trial length
   - verify all stands dynamically (render jsx, algorithms, etc)
 - Test - Jest/Enzyme or Cypress?
   - should start new game
   - insert stubbed combination and check right numbers & positions
-  - insert over
-- README.md file project full description
 - Heroku deploy ?
