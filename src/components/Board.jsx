@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { start } from "../store/actions/mastermindActions";
 import { checkRightNumber, checkRightPosition } from "../shared/coreFunctions";
 import PropTypes from "prop-types";
+
 const Board = ({ playing, start, attempts, secretCombination }) => {
   if (!playing) {
     return (
