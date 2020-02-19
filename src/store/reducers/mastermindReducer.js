@@ -9,7 +9,6 @@ import { getRandomTriad } from "../../shared/attemptsHelper";
 const initialState = {
   playing: false,
   attempts: [],
-  won: false,
   startingTime: Date.now(),
   attemptsCounter: 0,
   secretTriad: [],
@@ -35,8 +34,7 @@ export const reducer = (state = initialState, action) => {
     case INSERT_ATTEMPT:
       return {
         ...state,
-        attempts: state.attempts.concat([action.payload]),
-        won: action.payload === state.secretTriad
+        attempts: state.attempts.concat([action.payload])
       };
     case TOGGLE_MODAL: {
       return {
