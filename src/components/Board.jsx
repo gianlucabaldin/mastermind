@@ -6,7 +6,7 @@ import { start } from "../store/actions/mastermindActions";
 import { checkRightNumber, checkRightPosition } from "../shared/attemptsHelper";
 import PropTypes from "prop-types";
 
-const Board = ({ playing, start, attempts, secretTriad }) => {
+const Board = ({ playing, start, attempts, secretCombination }) => {
   if (!playing) {
     return (
       <Row>
@@ -20,7 +20,7 @@ const Board = ({ playing, start, attempts, secretTriad }) => {
   } else {
     return (
       <>
-        <Row>secretTriad = {secretTriad}--> REMOVE ME</Row>
+        <Row>secretCombination = {secretCombination}--> REMOVE ME</Row>
         {attempts && attempts.length > 0 && (
           <Row>
             <Col>
@@ -42,8 +42,8 @@ const Board = ({ playing, start, attempts, secretTriad }) => {
                       <td>{attempt[0]}</td>
                       <td>{attempt[1]}</td>
                       <td>{attempt[2]}</td>
-                      <td>{checkRightNumber(secretTriad, attempt)}</td>
-                      <td>{checkRightPosition(secretTriad, attempt)}</td>
+                      <td>{checkRightNumber(secretCombination, attempt)}</td>
+                      <td>{checkRightPosition(secretCombination, attempt)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -64,7 +64,7 @@ const Board = ({ playing, start, attempts, secretTriad }) => {
 const mapStateToProps = ({ reducer }) => ({
   playing: reducer.playing,
   attempts: reducer.attempts,
-  secretTriad: reducer.secretTriad
+  secretCombination: reducer.secretCombination
 });
 
 const mapDispatchToProps = {
@@ -78,5 +78,5 @@ Board.propTypes = {
   playing: PropTypes.bool,
   start: PropTypes.bool,
   attempts: PropTypes.array,
-  secretTriad: PropTypes.array
+  secretCombination: PropTypes.array
 };

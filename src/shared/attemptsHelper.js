@@ -9,28 +9,28 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 };
 
-export const getRandomTriad = () => {
-  let triad = [];
+export const getRandomCombination = () => {
+  let combination = [];
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
     let randomInt;
     do {
       randomInt = getRandomInt(1, 10);
-    } while (triad.includes(randomInt));
-    triad.push(randomInt);
+    } while (combination.includes(randomInt));
+    combination.push(randomInt);
   }
-  return triad;
+  return combination;
 };
 
 /**
- * Check if the attempt contains one or more number are present in the Secret Triad
+ * Check if the attempt contains one or more number are present in the Secret Combination
  * but not at the right positions
- * @param {number} secretTriad
+ * @param {number} secretCombination
  * @param {number} attempt
  */
-export const checkRightNumber = (secretTriad, attempt) => {
+export const checkRightNumber = (secretCombination, attempt) => {
   let count = 0;
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
-    let found = secretTriad.indexOf(attempt[i]);
+    let found = secretCombination.indexOf(attempt[i]);
     if (found === -1) continue;
     if (found === i) count++;
   }
@@ -42,15 +42,15 @@ export const checkRightNumber = (secretTriad, attempt) => {
 };
 
 /**
- * Check if the attempt contains one or more number are present in the Secret Triad
+ * Check if the attempt contains one or more number are present in the Secret Combination
  * at the right positions
- * @param {number} secretTriad
+ * @param {number} secretCombination
  * @param {number} attempt
  */
-export const checkRightPosition = (secretTriad, attempt) => {
+export const checkRightPosition = (secretCombination, attempt) => {
   let count = 0;
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
-    let found = secretTriad.indexOf(attempt[i]);
+    let found = secretCombination.indexOf(attempt[i]);
     if (found === -1) continue;
     if (found !== i) count++;
   }
@@ -119,7 +119,7 @@ export const checkRepeteadValues = attempt => {
  * initialState
  */
 export const checkAttempts = () => {
-  const { attempts, secretTriad } = store.getState().reducer;
+  const { attempts, secretCombination } = store.getState().reducer;
   if (attempts && attempts.length === MAX_ATTEMPTS_NUM) {
     store.dispatch(
       toggleModal({
@@ -130,7 +130,7 @@ export const checkAttempts = () => {
               You haven't guessed the secret combination in {MAX_ATTEMPTS_NUM}{" "}
               attempts!
             </p>
-            <p>You secret combination was {secretTriad}.</p>
+            <p>You secret combination was {secretCombination}.</p>
           </>
         )
       })
@@ -143,14 +143,14 @@ export const checkAttempts = () => {
  * to the user
  */
 export const abort = () => {
-  const { secretTriad } = store.getState().reducer;
+  const { secretCombination } = store.getState().reducer;
   store.dispatch(
     toggleModal({
       title: "Game aborted :(",
       content: (
         <>
           <p>You chose to abort the session game</p>
-          <p>You secret combination was {secretTriad}.</p>
+          <p>You secret combination was {secretCombination}.</p>
         </>
       )
     })

@@ -3,14 +3,14 @@ import {
   INSERT_ATTEMPT,
   TOGGLE_MODAL
 } from "../consts/mastermindConsts";
-import { getRandomTriad } from "../../shared/attemptsHelper";
+import { getRandomCombination } from "../../shared/attemptsHelper";
 
 const initialState = {
   playing: false,
   attempts: [],
   startingTime: Date.now(),
   attemptsCounter: 0,
-  secretTriad: [],
+  secretCombination: [],
   modal: {
     visible: false,
     title: "",
@@ -23,7 +23,7 @@ export const reducer = (state = initialState, action) => {
     case START:
       return {
         ...state,
-        secretTriad: getRandomTriad(),
+        secretCombination: getRandomCombination(),
         playing: true
       };
     case INSERT_ATTEMPT:
