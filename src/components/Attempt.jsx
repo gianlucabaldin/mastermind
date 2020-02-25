@@ -31,8 +31,9 @@ const Attempt = ({ insertAttempt }) => {
   // Check inputs correctness and if the combination is guessed
   const handleSubmit = event => {
     event.preventDefault();
-    if (checkInputsValues()) {
+    if (checkInputsValues([attempt.n1, attempt.n2, attempt.n3])) {
       setInvalidMessage("Error: please input three numbers within range [1-9]");
+      return;
     }
     if (checkRepeteadValues([attempt.n1, attempt.n2, attempt.n3])) {
       setInvalidMessage(

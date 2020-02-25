@@ -99,10 +99,10 @@ export const checkInputsValues = attempt => {
   for (let n in attempt) {
     const element = attempt[n];
     if (isNaN(element) || element <= 0 || element > 9) {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 };
 
 /**
