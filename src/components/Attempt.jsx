@@ -84,7 +84,7 @@ const Attempt = ({ insertAttempt }) => {
               />
             </Form.Group>
             <Form.Group as={Col} xs={2}>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" data-test="insert">
                 Insert
               </Button>
             </Form.Group>

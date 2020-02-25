@@ -11,7 +11,7 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
     return (
       <Row>
         <Col>
-          <Button variant="primary" onClick={() => start()}>
+          <Button variant="primary" onClick={() => start()} data-test="btn-start">
             Start
           </Button>
         </Col>
