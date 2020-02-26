@@ -97,7 +97,7 @@ const Attempt = ({ insertAttempt }) => {
               </Form.Group>
             </Form.Row>
           )}
-          <Button variant="primary" onClick={() => abort()}>
+          <Button variant="primary" onClick={() => abort()} data-test="abort">
             Abort
           </Button>
         </Form>
