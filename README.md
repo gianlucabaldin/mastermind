@@ -11,6 +11,27 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Redux --> app state management
 - React-Bootstrap --> (CSS) styling
 
+## Cypress test E2E
+
+Test are written with Cypress --> [http://cypress.io]
+
+In order to run the test suite make sure your local server is un and running, then in another shell type
+
+- "npm run cypress:open" --> opens the Cypress Test Runner and runs the test headed (in browser)
+- "npm run cypress:headless" --> run in headless mode with report and a final .mp4 video inside \cypress\video folder
+
+Test list:
+
+- Should enter the app
+- Should start a new game
+- Shouldn't insert chars as input
+- Should insert an attempt whose numbers are in range [1-9]
+- Shouldn't insert number out of range as input
+- Shouldn't insert number out of range as input
+- Shouldn't insert repeated value as input
+- Should abort and show a popup
+- Should guess the combination at first attempt
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -36,12 +57,6 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## TODO
-- Test - Jest/Enzyme or Cypress?
-  - should start a new game and see the board
-  - should start a new game, abort and check the popup is show
-  - should start a new game, insert number > 9 or < 1 and check error is shown
-  - should start a new game, insert char and check error is shown
-  - should start a new game, insert stubbed combination and check right numbers & positions
-  - should start a new game, insert 10 attempts and check the popup is show
+
 - manage secret trial length / verify all stands dynamically (render jsx, algorithms, etc)
 - Heroku deploy ?
