@@ -3,7 +3,7 @@ import { Table, Row, Col, Button } from "react-bootstrap";
 import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start } from "../store/actions/mastermindActions";
-import { checkRightNumber, checkRightPosition } from "../shared/coreFunctions";
+import { checkRightNumberWrongPosition, checkRightNumberRightPosition } from "../shared/coreFunctions";
 import PropTypes from "prop-types";
 
 const Board = ({ playing, start, attempts, secretCombination }) => {
@@ -30,8 +30,8 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
                     <td>N.1</td>
                     <td>N.2</td>
                     <td>N.3</td>
-                    <td>Right number</td>
-                    <td>Right position</td>
+                    <td>Right number(s)<br /> in wrong position</td>
+                    <td>Right number(s)<br /> in right position</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,8 +41,8 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
                       <td>{attempt[0]}</td>
                       <td>{attempt[1]}</td>
                       <td>{attempt[2]}</td>
-                      <td>{checkRightNumber(secretCombination, attempt)}</td>
-                      <td>{checkRightPosition(secretCombination, attempt)}</td>
+                      <td>{checkRightNumberWrongPosition(secretCombination, attempt)}</td>
+                      <td>{checkRightNumberRightPosition(secretCombination, attempt)}</td>
                     </tr>
                   ))}
                 </tbody>

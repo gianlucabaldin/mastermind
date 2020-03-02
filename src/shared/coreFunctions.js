@@ -22,21 +22,16 @@ export const getRandomCombination = () => {
 };
 
 /**
- * Check if the attempt contains one or more number are present in the Secret Combination
- * but not at the right positions
+ * Check if the attempt contains one or more number are present in the Secret Combination but not at the right positions
  * @param {number} secretCombination
  * @param {number} attempt
  */
-export const checkRightNumber = (secretCombination, attempt) => {
+export const checkRightNumberWrongPosition = (secretCombination, attempt) => {
   let count = 0;
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
     let found = secretCombination.indexOf(attempt[i]);
     if (found === -1) continue;
-    if (found === i) count++;
-  }
-  // check if guessed
-  if (count === DEFAULT_ATTEMPT_LENGTH) {
-    endGame();
+    if (found !== i) count++;
   }
   return count;
 };
@@ -47,12 +42,16 @@ export const checkRightNumber = (secretCombination, attempt) => {
  * @param {number} secretCombination
  * @param {number} attempt
  */
-export const checkRightPosition = (secretCombination, attempt) => {
+export const checkRightNumberRightPosition = (secretCombination, attempt) => {
   let count = 0;
   for (let i = 0; i < DEFAULT_ATTEMPT_LENGTH; i++) {
     let found = secretCombination.indexOf(attempt[i]);
     if (found === -1) continue;
-    if (found !== i) count++;
+    if (found === i) count++;
+  }
+  // check if guessed
+  if (count === DEFAULT_ATTEMPT_LENGTH) {
+    endGame();
   }
   return count;
 };
