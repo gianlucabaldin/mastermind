@@ -25,6 +25,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         secretCombination: getRandomCombination(),
+        startingTime: Date.now(),
         playing: true
       };
     case INSERT_ATTEMPT:
