@@ -3,15 +3,23 @@ import { Table, Row, Col, Button } from "react-bootstrap";
 import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start } from "../store/actions/mastermindActions";
-import { checkRightNumberWrongPosition, checkRightNumberRightPosition } from "../shared/coreFunctions";
+import {
+  checkRightNumberWrongPosition,
+  checkRightNumberRightPosition
+} from "../shared/coreFunctions";
 import PropTypes from "prop-types";
+import "../style/board.css";
 
 const Board = ({ playing, start, attempts, secretCombination }) => {
   if (!playing) {
     return (
       <Row>
         <Col>
-          <Button variant="primary" onClick={() => start()} data-test="btn-start">
+          <Button
+            variant="primary"
+            onClick={() => start()}
+            data-test="btn-start"
+          >
             Start
           </Button>
         </Col>
@@ -30,8 +38,14 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
                     <td>N.1</td>
                     <td>N.2</td>
                     <td>N.3</td>
-                    <td>Right number(s)<br /> in wrong position</td>
-                    <td>Right number(s)<br /> in right position</td>
+                    <td>
+                      Right number(s)
+                      <br /> in wrong position
+                    </td>
+                    <td>
+                      Right number(s)
+                      <br /> in right position
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,8 +55,18 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
                       <td>{attempt[0]}</td>
                       <td>{attempt[1]}</td>
                       <td>{attempt[2]}</td>
-                      <td>{checkRightNumberWrongPosition(secretCombination, attempt)}</td>
-                      <td>{checkRightNumberRightPosition(secretCombination, attempt)}</td>
+                      <td>
+                        {checkRightNumberWrongPosition(
+                          secretCombination,
+                          attempt
+                        )}
+                      </td>
+                      <td>
+                        {checkRightNumberRightPosition(
+                          secretCombination,
+                          attempt
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
