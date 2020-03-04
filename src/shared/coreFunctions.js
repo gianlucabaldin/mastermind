@@ -1,6 +1,6 @@
 import React from "react";
 import { DEFAULT_ATTEMPT_LENGTH, MAX_ATTEMPTS_NUM } from "./consts";
-import { store } from "../index";
+import { store } from "../store/StoreProvider";
 import { toggleModal } from "../store/actions/mastermindActions";
 
 const getRandomInt = (min, max) => {
