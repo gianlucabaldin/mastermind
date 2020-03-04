@@ -1,5 +1,49 @@
-import { checkRightNumberWrongPosition } from './coreFunctions';
+import {
+  checkRightNumberWrongPosition,
+  checkRightNumberRightPosition
+} from "./coreFunctions";
 
-it('should count 0 right number in wrong position', ()=>{
-    expect(checkRightNumberWrongPosition([1,2,3], [4,5,6])).toBe(0);
-})
+/**
+ *  Test all the possibile combinations for both algorithms having 3 slots and 3 possibilities:
+ * 
+ * - wrong number
+ * - right number in wrong positions
+ * - right number in right position
+ * 
+ * Notes: 
+ *  - RNWP stands for Right Number in Wrong Position
+ *  - RNRP stands for Right Number in Right Position
+ *  - %j stands for element in JSON format
+ *  - %i stands for integer
+ *  - the params in the test description are read serialized
+ * 
+ * See 
+ * https://jestjs.io/docs/en/api#1-testeachtablename-fn-timeout
+ */
+describe("test counter algorithm", () => {
+ 
+  test.each([
+    // RNWP = 0, RNRP = 0
+    [[1, 2, 3], [4, 5, 6], 0, 0],
+    // RNWP = 1, RNRP = 0
+    [[1, 2, 3], [2, 5, 6], 1, 0],
+    [[1, 2, 3], [4, 1, 6], 1, 0],
+    [[1, 2, 3], [4, 5, 1], 1, 0],
+    // RNWP = 2, RNRP = 0
+    [[1, 2, 3], [3, 5, 1], 2, 0],
+    [[1, 2, 3], [2, 1, 6], 2, 0],
+    [[1, 2, 3], [4, 1, 2], 2, 0],
+    // RNWP = 3, RNRP = 0
+    [[1, 2, 3], [3, 1, 2], 3, 0],
+  ])(
+    `case (%j, %j) --> RNWP() should count %i, RNRP() should count %i`,
+    (combination, attempt, expectedRNWPCount, expectedRNRPCount) => {
+      expect(checkRightNumberWrongPosition(combination, attempt)).toBe(
+        expectedRNWPCount
+      );
+      expect(checkRightNumberRightPosition(combination, attempt)).toBe(
+        expectedRNRPCount
+      );
+    }
+  );
+});
