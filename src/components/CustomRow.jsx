@@ -4,17 +4,17 @@ import {
   checkRightNumberRightPosition
 } from "../shared/coreFunctions";
 
-const CustomRow = props => (
-  <tr key={props.index}>
-    <td># {props.index + 1}</td>
-    <td>{props.attempt[0]}</td>
-    <td>{props.attempt[1]}</td>
-    <td>{props.attempt[2]}</td>
+const CustomRow = ({index, attempt, secretCombination}) => (
+  <tr key={index}>
+    <td># {index + 1}</td>
+    <td>{attempt[0]}</td>
+    <td>{attempt[1]}</td>
+    <td>{attempt[2]}</td>
     <td>
-      {checkRightNumberWrongPosition(props.secretCombination, props.attempt)}
+      {checkRightNumberWrongPosition(secretCombination, attempt)}
     </td>
     <td>
-      {checkRightNumberRightPosition(props.secretCombination, props.attempt)}
+      {checkRightNumberRightPosition(secretCombination, attempt)}
     </td>
   </tr>
 );
