@@ -3,12 +3,9 @@ import { Table, Row, Col, Button } from "react-bootstrap";
 import Attempt from "./Attempt";
 import { connect } from "react-redux";
 import { start } from "../store/actions/mastermindActions";
-import {
-  checkRightNumberWrongPosition,
-  checkRightNumberRightPosition
-} from "../shared/coreFunctions";
 import PropTypes from "prop-types";
 import "../style/board.css";
+import CustomRow from "./CustomRow";
 
 const Board = ({ playing, start, attempts, secretCombination }) => {
   if (!playing) {
@@ -50,24 +47,11 @@ const Board = ({ playing, start, attempts, secretCombination }) => {
                 </thead>
                 <tbody>
                   {attempts.map((attempt, index) => (
-                    <tr key={index}>
-                      <td># {index + 1}</td>
-                      <td>{attempt[0]}</td>
-                      <td>{attempt[1]}</td>
-                      <td>{attempt[2]}</td>
-                      <td>
-                        {checkRightNumberWrongPosition(
-                          secretCombination,
-                          attempt
-                        )}
-                      </td>
-                      <td>
-                        {checkRightNumberRightPosition(
-                          secretCombination,
-                          attempt
-                        )}
-                      </td>
-                    </tr>
+                    <CustomRow
+                      index={index}
+                      attempt={attempt}
+                      secretCombination={secretCombination}
+                    />
                   ))}
                 </tbody>
               </Table>
