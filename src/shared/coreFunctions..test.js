@@ -16,7 +16,7 @@ import {
  *  - %j stands for element in JSON format
  *  - %i stands for integer
  *  - the params in the test description are read serialized
- *  - in this version with no repetitions allowed, the version RNWP=1/RNRP=2 and RNWP=2/RNRP=1 can't happen
+ *  - in this version with no repetitions allowed, the version RNWP=1/RNRP=2 can't happen
  *
  *  For the documentation see https://jestjs.io/docs/en/api#1-testeachtablename-fn-timeout
  */
@@ -50,7 +50,11 @@ describe("test counter algorithm", () => {
     [[1, 2, 3], [3, 2, 6], 1, 1], // WR-
     [[1, 2, 3], [2, 5, 3], 1, 1], // W-R
     [[1, 2, 3], [6, 2, 1], 1, 1], // -RW
-    [[1, 2, 3], [6, 1, 3], 1, 1]  // -WR
+    [[1, 2, 3], [6, 1, 3], 1, 1], // -WR
+    // RNWP = 2, RNRP = 1
+    [[1, 2, 3], [2, 1, 3], 2, 1], // WWR
+    [[1, 2, 3], [3, 2, 1], 2, 1], // WRW
+    [[1, 2, 3], [1, 3, 2], 2, 1], // RWW
   ])(
     `case (%j, %j) --> RNWP() should count %i, RNRP() should count %i`,
     (combination, attempt, expectedRNWPCount, expectedRNRPCount) => {
