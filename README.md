@@ -4,6 +4,8 @@ A React-Redux project simulates the Mastermind game guesses a secret combination
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Live demo on Heroku here --> [https://gianlucabaldin-mastermind.herokuapp.com](https://gianlucabaldin-mastermind.herokuapp.com)
+
 ## Tecnologies / Libraries etc
 - NodeJS --> environment
 - Create React App --> project starting point
